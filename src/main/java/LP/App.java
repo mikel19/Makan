@@ -1,4 +1,4 @@
-package Makan;
+package LP;
 
 /**
  * Hello world!
