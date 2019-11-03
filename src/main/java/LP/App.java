@@ -19,6 +19,7 @@ public class App
     {
         System.out.println( "Hello World!" );
         ventanaPrincipal frame = new ventanaPrincipal();
-        frame.lanzarVentana();
+        frame.setVisible(true);
+        //frame.lanzarVentana();
     }
 }

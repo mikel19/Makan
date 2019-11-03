@@ -71,5 +71,21 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    
+		<finalName>Spring Examples</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				 <includes><include>logo.png</include></includes>
+			</resource>
+			<resource>
+				<directory>src/main/config</directory>
+			</resource>
+		</resources>
+
+	
   </build>
+
+
 </project>
