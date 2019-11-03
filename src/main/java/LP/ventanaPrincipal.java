@@ -17,7 +17,7 @@ public class ventanaPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void lanzarVentana() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
