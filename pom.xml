@@ -25,8 +25,56 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
+    
+  	<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-core -->
+	<dependency>
+    <groupId>org.datanucleus</groupId>
+    <artifactId>datanucleus-core</artifactId>
+    <version>5.2.2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-api-jdo -->
+	<dependency>
+    <groupId>org.datanucleus</groupId>
+    <artifactId>datanucleus-api-jdo</artifactId>
+    <version>5.2.2</version>
+	</dependency>
 
+	<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-cache -->
+	<dependency>
+    <groupId>org.datanucleus</groupId>
+    <artifactId>datanucleus-cache</artifactId>
+    <version>5.1.1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.datanucleus/datanucleus-rdbms -->
+	<dependency>
+    <groupId>org.datanucleus</groupId>
+    <artifactId>datanucleus-rdbms</artifactId>
+    <version>5.2.1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/javax.jdo/jdo-api -->
+	<dependency>
+    <groupId>javax.jdo</groupId>
+    <artifactId>jdo-api</artifactId>
+    <version>3.1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.15</version>
+	</dependency>
+	
+	
+	
+	
+  	  
+  
+  </dependencies>
+	
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
