@@ -1,6 +1,7 @@
 package LP;
 
 import LN.*;
+import redis.clients.jedis.Connection;
 
 import java.util.ArrayList;
 
@@ -20,13 +21,13 @@ public class App
     public static void main( String[] args )
     {
     	BaseDeDatos datos=new BaseDeDatos();
-       //datos.conexion();
-      // datos.creaciontabla();
-    	
-        System.out.println( "Hello World!" );
-        ventanaPrincipal frame = new ventanaPrincipal();
-        frame.setVisible(true);
-        //frame.lanzarVentana();
+    	Reserva reserva = null;
+    	// datos.creaciontabla();
+  
+       ventanaPrincipal frame = new ventanaPrincipal();
+       frame.setVisible(true);
+       frame.lanzarVentana();
+       java.sql.Connection c=datos.conectar();
         
     }
 }

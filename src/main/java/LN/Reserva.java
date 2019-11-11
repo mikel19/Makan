@@ -11,11 +11,11 @@ public class Reserva {
     private String apellido;
     private String telefono;
     private int numPersonas;
-    private Date fecha;
+    private String fecha;
     private String hora;
     private Menu menu;
 
-    public Reserva(String nombre, String apellido, String telefono, int numPersonas, Date fecha, String hora, Menu menu) {
+    public Reserva(String nombre, String apellido, String telefono, int numPersonas, String fecha, String hora, Menu menu) {
         this.idReserva = App.reservas.size()+1;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -66,11 +66,11 @@ public class Reserva {
         this.numPersonas = numPersonas;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

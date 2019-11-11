@@ -8,7 +8,7 @@ public class Gestor {
 
     BaseDeDatos datos = new BaseDeDatos();
 
-    public Reserva crearReserva(String nombre, String apellidos, String telefono, int numPersonas, Date fecha, String hora, Menu menu){
+    public Reserva crearReserva(String nombre, String apellidos, String telefono, int numPersonas, String fecha, String hora, Menu menu){
         Reserva nuevaReserva = new Reserva(nombre, apellidos, telefono, numPersonas, fecha, hora, menu);
         App.reservas.add(nuevaReserva);
         return nuevaReserva;
