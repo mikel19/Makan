@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import LD.BaseDeDatos;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import LN.Menu;
@@ -39,7 +41,7 @@ public class ventanaReservas extends JFrame implements ActionListener{
 	private String apellido;
 	private String telefono;
 	private int numPersonas;
-	private Date fecha;
+	private String fecha;
 	private String hora;
 	private Menu menu;
 	private JComboBox comboBox;
@@ -157,7 +159,7 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		{
 		case "RESERVAR":
 			recogerDatos();
-			reserva = new Reserva(nombre, apellido, telefono, numPersonas, fecha,hora,menu);
+			//reserva = new Reserva(nombre, apellido, telefono, numPersonas, fecha,hora,menu);
 			vaciarTextFields();
 			break;
 			
@@ -183,28 +185,26 @@ public class ventanaReservas extends JFrame implements ActionListener{
  */
 	private void recogerDatos()
 	{
-		try {
+		
+		int id=0;
 		nombre = textFieldNombre.getText();
 		apellido = textFieldApellido.getText();
 		telefono = textFieldTelefono.getText();
 		numPersonas = Integer.parseInt(textFieldNumPersonas.getText());
+		String fecha2="ff";
 		
-		
-		fecha = new SimpleDateFormat("dd/MM/yyyy").parse(textFieldFecha.getText());
+		//fecha = textFieldFecha.getText();
 		
 		hora = textFieldHora.getText();
-		menu = new Menu(comboBox.getSelectedItem()+"",20);
-
+		//menu = new Menu(comboBox.getSelectedItem()+"",20);
+		String menu2="ggg";
+		String numpersonas2="dd";
+		BaseDeDatos datos=new BaseDeDatos();
+		datos.anadirdatos(id, nombre, apellido, fecha2, hora, menu2, numpersonas2);
 		JOptionPane.showMessageDialog(null,"Reserva realizada correctamente");
 		
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch(NumberFormatException e1)
-		{
-			JOptionPane.showMessageDialog(null, "Error en el formato numerico. Por favor compruebalo");
-		}
+		
+	
 		
 		
 		

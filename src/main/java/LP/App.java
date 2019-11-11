@@ -4,6 +4,8 @@ import LN.*;
 
 import java.util.ArrayList;
 
+import LD.BaseDeDatos;
+
 /**
  * Hello world!
  *
@@ -17,9 +19,14 @@ public class App
 
     public static void main( String[] args )
     {
+    	BaseDeDatos datos=new BaseDeDatos();
+       //datos.conexion();
+      // datos.creaciontabla();
+    	
         System.out.println( "Hello World!" );
         ventanaPrincipal frame = new ventanaPrincipal();
         frame.setVisible(true);
         //frame.lanzarVentana();
+        
     }
 }
