@@ -54,7 +54,33 @@ public class BaseDeDatos {
 	      }
 	      System.out.println("Table created successfully");
 	}
-	public void anadirdatos(Reserva reserva) {
+	
+	public void creaciontabla2() {
+		 Connection c = null;
+	      Statement stmt = null;
+	      
+	      try {
+	         Class.forName("org.sqlite.JDBC");
+	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         System.out.println("Opened database successfully");
+
+	         stmt = c.createStatement();
+	         String sql = "CREATE TABLE menu " +
+	                        "(TIPO TEXT  NOT NULL," + 
+	                        " PRECIO INT NOT NULL," +
+	                         "PLATO1 TEXT NOT NULL," +
+	                         "PLATO2 TEXT NOT NULL," +
+	                        "PLATO3 TEXT NOT NULL)"; 
+	         stmt.executeUpdate(sql);
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Table created successfully");
+	}
+	public void anadirdatosreserva(Reserva reserva) {
 	
 		
 		Connection c = null;
@@ -66,7 +92,7 @@ public class BaseDeDatos {
 	         System.out.println("Opened database successfully");
 	         stmt = c.createStatement();
 	         String sql = "INSERT INTO RESERVAS (NOMBRE,APELLIDO,FECHA,TELEFONO,HORA,MENU,PERSONAS) " +
-                  "VALUES ('"+reserva.getNombre()+"','"+reserva.getApellido()+"','"+reserva.getFecha()+"','"+reserva.getTelefono()+"','"+reserva.getHora()+"','"+reserva.getTelefono()+"','"+reserva.getNumPersonas()+"');"; 
+                  "VALUES ('"+reserva.getNombre()+"','"+reserva.getApellido()+"','"+reserva.getFecha()+"','"+reserva.getTelefono()+"','"+reserva.getHora()+"','"+reserva.getMenu().getTipo()+"','"+reserva.getNumPersonas()+"');"; 
 	         stmt.executeUpdate(sql);
 	         stmt.close();
 		      c.commit();
@@ -79,6 +105,20 @@ public class BaseDeDatos {
 	         
 	         
 	}
+		
+//public ResultSet consultar(String sql){
+//	
+//	Connection c = null;
+//      Reserva stmt = null;
+// ResultSet resultado = null;
+// try {
+//  resultado = rR.executeQuery(sql);
+// }catch (SQLException e) {
+//  JOptionPane.showMessageDialog(null, ""+e.getMessage());
+// }
+//  return resultado;
+//}
+	
 	
 	public Connection conectar(){
 		try{

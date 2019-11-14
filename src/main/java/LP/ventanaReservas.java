@@ -196,15 +196,15 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		//fecha = textFieldFecha.getText();
 		
 		hora = textFieldHora.getText();
-		//menu = new Menu(comboBox.getSelectedItem()+"",20);
+		menu = new Menu(comboBox.getSelectedItem()+"",20);
 		Reserva reserva=new Reserva(nombre, apellido, telefono, numPersonas, fecha, hora, menu);
 		
+	
 		
-
 		
 	
 	BaseDeDatos datos=new BaseDeDatos();
-		datos.anadirdatos(reserva);
+		datos.anadirdatosreserva(reserva);
 		JOptionPane.showMessageDialog(null,"Reserva realizada correctamente");
 		
 		

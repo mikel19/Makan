@@ -23,6 +23,7 @@ public class App
     	BaseDeDatos datos=new BaseDeDatos();
     	Reserva reserva = null;
     	// datos.creaciontabla();
+    	//datos.creaciontabla2();
   
        ventanaPrincipal frame = new ventanaPrincipal();
        frame.setVisible(true);
