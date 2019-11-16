@@ -1,0 +1,125 @@
+package LP;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import LD.BaseDeDatos;
+import LN.Menu;
+import LN.Plato;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+
+public class Crearmenu extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField tipo;
+	private JTextField precio;
+	private JTextField plato2;
+	private JTextField plato3;
+	private String tipo1;
+	private float precio1;
+	private String plato11;
+	private String plato22;
+	private String plato33;
+
+	
+	public Crearmenu() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 871, 738);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("INTRODUCIR LOS DATOS");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 101, 849, 20);
+		contentPane.add(lblNewLabel);
+		
+		tipo = new JTextField();
+		tipo.setBounds(139, 147, 86, 20);
+		contentPane.add(tipo);
+		tipo.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("TIPO");
+		lblNewLabel_1.setBounds(72, 150, 46, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Precio");
+		lblNewLabel_2.setBounds(72, 199, 46, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		precio = new JTextField();
+		precio.setBounds(139, 196, 86, 20);
+		contentPane.add(precio);
+		precio.setColumns(10);
+		
+		JLabel lblPlato = new JLabel("Plato 1");
+		lblPlato.setBounds(364, 274, 46, 14);
+		contentPane.add(lblPlato);
+		
+		JLabel lblPlato_1 = new JLabel("Plato 2");
+		lblPlato_1.setBounds(364, 321, 46, 14);
+		contentPane.add(lblPlato_1);
+		
+		plato2 = new JTextField();
+		plato2.setBounds(439, 318, 86, 20);
+		contentPane.add(plato2);
+		plato2.setColumns(10);
+		
+		JLabel lblPlato_2 = new JLabel("plato 3");
+		lblPlato_2.setBounds(364, 373, 46, 14);
+		contentPane.add(lblPlato_2);
+		
+		
+		plato3 = new JTextField();
+		plato3.setBounds(439, 370, 86, 20);
+		contentPane.add(plato3);
+		plato3.setColumns(10);
+		
+		JButton aceptar = new JButton("aceptar");
+		aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+		
+				
+				tipo1=tipo.getText();
+			precio1=Float.parseFloat(precio.getText());
+				
+				plato22=plato2.getText();
+			plato33=plato3.getText();
+			
+				Menu menu=new Menu(tipo1, precio1, plato11,plato22,plato33);
+				BaseDeDatos datos=new BaseDeDatos();
+				datos.añadirmenu(menu);
+				
+				
+			}
+		});
+		aceptar.setBounds(222, 553, 109, 36);
+		contentPane.add(aceptar);
+		BaseDeDatos datos=new BaseDeDatos();
+		Plato platos=new Plato(plato11, precio1, plato11, plato11);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(439, 270, 61, 22);
+		contentPane.add(comboBox);
+		comboBox.addItem(datos.leerdatos().getNombre());
+		
+	}
+}
