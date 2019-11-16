@@ -3,7 +3,11 @@ package LP;
 import LN.*;
 import redis.clients.jedis.Connection;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import com.mysql.cj.xdevapi.Statement;
 
 import LD.BaseDeDatos;
 
@@ -21,9 +25,10 @@ public class App
     public static void main( String[] args )
     {
     	BaseDeDatos datos=new BaseDeDatos();
-    	Reserva reserva = null;
+//    	datos.leerdatos();
     	// datos.creaciontabla();
     	//datos.creaciontabla2();
+    	//datos.creaciontabla3();
   
        ventanaPrincipal frame = new ventanaPrincipal();
        frame.setVisible(true);

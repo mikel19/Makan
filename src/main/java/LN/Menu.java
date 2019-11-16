@@ -9,16 +9,46 @@ public class Menu {
     private int idMenu;
     private String tipo;
     private float precio;
-    private ArrayList<Plato> platos;
+    private String plato1;
+    private String plato2;
+    private String plato3;
+  
 
-    public Menu(String tipo, float precio) {
+    public Menu(String tipo, float precio, String plato1, String plato2, String plato3) {
         this.idMenu = App.menus.size()+1;
         this.tipo = tipo;
         this.precio = precio;
-        this.platos = new ArrayList<Plato>();
+        this.plato1=plato1;
+        this.plato2=plato2;
+        this.plato3=plato3;
+   
     }
 
-    public int getIdMenu() {
+    public String getPlato1() {
+		return plato1;
+	}
+
+	public void setPlato1(String plato1) {
+		this.plato1 = plato1;
+	}
+
+	public String getPlato2() {
+		return plato2;
+	}
+
+	public void setPlato2(String plato2) {
+		this.plato2 = plato2;
+	}
+
+	public String getPlato3() {
+		return plato3;
+	}
+
+	public void setPlato3(String plato3) {
+		this.plato3 = plato3;
+	}
+
+	public int getIdMenu() {
         return idMenu;
     }
 
@@ -42,11 +72,5 @@ public class Menu {
         this.precio = precio;
     }
 
-    public ArrayList<Plato> getPlatos() {
-        return platos;
-    }
-
-    public void setPlatos(ArrayList<Plato> platos) {
-        this.platos = platos;
-    }
+ 
 }

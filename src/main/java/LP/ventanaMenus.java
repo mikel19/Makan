@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ventanaMenus extends JFrame {
 
@@ -31,6 +34,16 @@ public class ventanaMenus extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 101, 849, 20);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Crear nuevo menu");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Crearmenu menu=new Crearmenu();
+				menu.setVisible(true);
+				
+			}
+		});
+		btnNewButton.setBounds(50, 132, 89, 23);
+		contentPane.add(btnNewButton);
 	}
-
 }

@@ -23,8 +23,8 @@ public class Gestor {
         App.comandas.add(nuevaComanda);
         return nuevaComanda;
     }
-    public Menu crearMenu(String tipo, float precio){
-        Menu nuevoMenu = new Menu(tipo, precio);
+    public Menu crearMenu(String tipo, int precio, String plato1, String plato2, String plato3){
+        Menu nuevoMenu = new Menu(tipo, precio, plato1, plato2, plato3);
         App.menus.add(nuevoMenu);
         return nuevoMenu;
     }
@@ -36,11 +36,11 @@ public class Gestor {
         }
     }
     public void addMenu(Plato plato, int idMenu){
-        for (int i=0; i<App.menus.size(); i++){
-            if (App.menus.get(i).getIdMenu() == idMenu){
-                App.menus.get(i).getPlatos().add(plato);
-            }
-        }
+//        for (int i=0; i<App.menus.size(); i++){
+//            if (App.menus.get(i).getIdMenu() == idMenu){
+//                App.menus.get(i).getPlato1().add(plato);
+//            }
+//        }
     }
 
 }

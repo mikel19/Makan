@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import LN.Menu;
+import LN.Plato;
 import LN.Reserva;
 
 public class BaseDeDatos {
@@ -67,10 +69,35 @@ public class BaseDeDatos {
 	         stmt = c.createStatement();
 	         String sql = "CREATE TABLE menu " +
 	                        "(TIPO TEXT  NOT NULL," + 
-	                        " PRECIO INT NOT NULL," +
+	                        " PRECIO FLOAT NOT NULL," +
 	                         "PLATO1 TEXT NOT NULL," +
 	                         "PLATO2 TEXT NOT NULL," +
 	                        "PLATO3 TEXT NOT NULL)"; 
+	         stmt.executeUpdate(sql);
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Table created successfully");
+	}
+	public void creaciontabla3() {
+		 Connection c = null;
+	      Statement stmt = null;
+	      
+	      try {
+	         Class.forName("org.sqlite.JDBC");
+	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         System.out.println("Opened database successfully");
+
+	         stmt = c.createStatement();
+	         String sql = "CREATE TABLE PLATOS " +
+	                        "(ID INT  NOT NULL," + 
+	                        " NOMBRE TEXT NOT NULL," +
+	                         "PRECIO FLOAT NOT NULL," +
+	                         "ALERGENOS FLOAT NOT NULL," +
+	                        "CHEF TEXT NOT NULL)"; 
 	         stmt.executeUpdate(sql);
 	         stmt.close();
 	         c.close();
@@ -104,6 +131,90 @@ public class BaseDeDatos {
 		      System.out.println("Records created successfully");
 	         
 	         
+	}
+
+	public void añadirmenu(Menu menu) {
+		
+		Connection c = null;
+	      Statement stmt = null;
+		 try {
+	         Class.forName("org.sqlite.JDBC");
+	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         stmt = c.createStatement();
+	         String sql = "INSERT INTO MENU (TIPO,PRECIO,PLATO1,PLATO2,PLATO3) " +
+                "VALUES ('"+menu.getTipo()+"','"+menu.getPrecio()+"','"+menu.getPlato1()+"','"+menu.getPlato2()+"','"+menu.getPlato3()+"');"; 
+	         stmt.executeUpdate(sql);
+	         stmt.close();
+		      c.commit();
+		      c.close();
+		  } catch ( Exception e ) {
+		         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		         System.exit(0);
+		      }
+		      System.out.println("Records created successfully");
+		
+		
+		
+	}
+	
+	public void añadirplatos(Plato plato) {
+		
+		Connection c = null;
+	      Statement stmt = null;
+		 try {
+	         Class.forName("org.sqlite.JDBC");
+	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         stmt = c.createStatement();
+	         String sql = "INSERT INTO PLATOS (ID,NOMBRE,PRECIO,ALERGENOS,CHEF) " +
+                "VALUES ('2','"+plato.getNombre()+"','"+plato.getPrecio()+"','"+plato.getAlergenos()+"','"+plato.getNombreChef()+"');"; 
+	         stmt.executeUpdate(sql);
+	         stmt.close();
+		      c.commit();
+		      c.close();
+		  } catch ( Exception e ) {
+		         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		         System.exit(0);
+		      }
+		      System.out.println("Records created successfully");
+		
+		
+		
+	}
+	public Plato leerdatos() {
+		int i=1;
+		  Plato plato=new Plato("",2,"","");
+		Connection c = null;
+	      Statement stmt = null;
+			ResultSet resultados = null;
+	      try {
+			Class.forName("org.sqlite.JDBC");
+		    c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    stmt = c.createStatement();
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         resultados = stmt.executeQuery("SELECT * FROM PLATOS;");
+	     	while (resultados.next()) {
+	     		
+			    System.out.println("NOMBRE " + resultados.getString("NOMBRE"));
+			    i=i+1;
+			 plato.setNombre(resultados.getString(1));
+			 return plato;  
+			   }
+	     	resultados.close();
+	     	c.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		return plato;
+		return null;
+	     
+
+		
 	}
 		
 //public ResultSet consultar(String sql){
