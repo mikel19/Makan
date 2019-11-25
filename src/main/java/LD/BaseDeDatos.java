@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import LN.Menu;
 import LN.Plato;
@@ -14,7 +15,8 @@ public class BaseDeDatos {
 
 	private final String RUTABD = "data/Makan" +
 			".";
-	
+	private Plato plato;
+	private ArrayList <Plato> list = new ArrayList<Plato>();
 	public  void conexion() {
 		Connection c = null;
 		System.out.println("fff");
@@ -184,38 +186,11 @@ public class BaseDeDatos {
 		
 		
 	}
-	public Plato leerdatos() {
-		int i=1;
-		  Plato plato=new Plato("",2,"","");
-		Connection c = null;
-	      Statement stmt = null;
-			ResultSet resultados = null;
-	      try {
-			Class.forName("org.sqlite.JDBC");
-		    c = DriverManager.getConnection("jdbc:sqlite:test.db");
-		    stmt = c.createStatement();
-	         c.setAutoCommit(false);
-	         System.out.println("Opened database successfully");
-	         resultados = stmt.executeQuery("SELECT * FROM PLATOS;");
-	     	while (resultados.next()) {
-	     		
-			    System.out.println("NOMBRE " + resultados.getString("NOMBRE"));
-			    i=i+1;
-			 plato.setNombre(resultados.getString(1));
-			 return plato;  
-			   }
-	     	resultados.close();
-	     	c.close();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		return plato;
-		return null;
+	
 	     
 
 		
-	}
+	
 		
 //public ResultSet consultar(String sql){
 //	
@@ -278,6 +253,43 @@ public class BaseDeDatos {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	public ArrayList <Plato> leerdatos() {
+		list.clear();
+		int i=1;
+		  
+		Connection c = null;
+	      Statement stmt = null;
+			ResultSet resultados = null;
+	      try {
+			Class.forName("org.sqlite.JDBC");
+		    c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    stmt = c.createStatement();
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         resultados = stmt.executeQuery("SELECT NOMBRE FROM PLATOS;");
+	     	while (resultados.next()) {
+	     		
+			    System.out.println("NOMBRE " + resultados.getString("NOMBRE"));
+			   // plato.setNombre(resultados.getString("NOMBRE"));
+			   plato=new Plato("",2,"","");
+			    plato.setNombre(resultados.getString("NOMBRE"));
+			    list.add(plato);
+			 //plato.setNombre(resultados.getString(1));
+			   
+			   }
+	     	resultados.close();
+	     	c.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	return list;
+		
+	     
+
+		
 	}
 
 }

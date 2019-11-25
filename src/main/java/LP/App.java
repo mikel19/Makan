@@ -25,8 +25,8 @@ public class App
     public static void main( String[] args )
     {
     	BaseDeDatos datos=new BaseDeDatos();
-//    	datos.leerdatos();
-    	// datos.creaciontabla();
+    	//datos.leerdatos();
+    	//datos.creaciontabla();
     	//datos.creaciontabla2();
     	//datos.creaciontabla3();
   
