@@ -14,9 +14,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ventanaMenus extends JFrame {
+public class ventanaMenus extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JButton btnNewButton2;
 
 	
 	public ventanaMenus() {
@@ -45,5 +46,25 @@ public class ventanaMenus extends JFrame {
 		});
 		btnNewButton.setBounds(50, 132, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton2 = new JButton("ATRAS");
+		btnNewButton2.setForeground(Color.GRAY);
+		btnNewButton2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton2.setBounds(20, 80, 130, 30);
+		btnNewButton2.addActionListener(this);
+		contentPane.add(btnNewButton2);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		switch(e.getActionCommand())
+		{		
+			case "ATRAS":
+				dispose();
+				break;
+		}
+		
 	}
 }

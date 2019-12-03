@@ -16,7 +16,9 @@ public class BaseDeDatos {
 	private final String RUTABD = "data/Makan" +
 			".";
 	private Plato plato;
+	private Reserva reserva;
 	private ArrayList <Plato> list = new ArrayList<Plato>();
+	private ArrayList <Reserva> listaReservas = new ArrayList<Reserva>();
 	public  void conexion() {
 		Connection c = null;
 		System.out.println("fff");
@@ -286,9 +288,47 @@ public class BaseDeDatos {
 			e.printStackTrace();
 		}
 	return list;
-		
+	}
+	
+	public ArrayList <Reserva> leerReservas() {
+		list.clear();
+		int i=1;
+		  
+		Connection c = null;
+	      Statement stmt = null;
+			ResultSet resultados = null;
+	      try {
+			Class.forName("org.sqlite.JDBC");
+		    c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    stmt = c.createStatement();
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         resultados = stmt.executeQuery("SELECT NOMBRE, APELLIDO, FECHA, HORA, TELEFONO, MENU, PERSONAS FROM RESERVAS;");
+	     	while (resultados.next()) {
+	     		
+	     			System.out.println("NOMBRE " + resultados.getString("NOMBRE"));
+				   // plato.setNombre(resultados.getString("NOMBRE"));
+	     			reserva=new Reserva("","","",0,"","",null);
+				    reserva.setNombre(resultados.getString("NOMBRE"));
+				    reserva.setApellido(resultados.getString("APELLIDO"));
+				    reserva.setFecha(resultados.getString("FECHA"));
+				    reserva.setHora(resultados.getString("HORA"));
+				    reserva.setTelefono(resultados.getString("TELEFONO"));
+				    reserva.setNumPersonas(resultados.getInt("PERSONAS"));
+	     		
+			    listaReservas.add(reserva);
+			 //plato.setNombre(resultados.getString(1));
+			   
+			   }
+	     	resultados.close();
+	     	c.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	return listaReservas;
 	     
-
+	
 		
 	}
 

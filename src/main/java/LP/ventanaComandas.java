@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ventanaComandas extends JFrame {
+public class ventanaComandas extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField id;
@@ -28,6 +28,7 @@ public class ventanaComandas extends JFrame {
 	private JTextField nombrep;
 	private JTextField alergenos;
 	private JTextField cheff2;
+	private JButton btnNewButton2;
 
 	
 	public ventanaComandas() {
@@ -108,6 +109,25 @@ public class ventanaComandas extends JFrame {
 		btnAceptar.setBounds(141, 253, 89, 23);
 		contentPane.add(btnAceptar);
 	
+		
+		btnNewButton2 = new JButton("ATRAS");
+		btnNewButton2.setForeground(Color.GRAY);
+		btnNewButton2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton2.setBounds(20, 80, 130, 30);
+		btnNewButton2.addActionListener(this);
+		contentPane.add(btnNewButton2);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		switch(e.getActionCommand())
+		{		
+			case "ATRAS":
+				dispose();
+				break;
+		}
 		
 	}
 	private void vaciarTextFields() 

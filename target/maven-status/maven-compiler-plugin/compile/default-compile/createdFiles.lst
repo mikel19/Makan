@@ -11,6 +11,7 @@ LP/ventanaComandas.class
 LP/ventanaPrincipal.class
 LD/BaseDeDatos.class
 LP/ventanaReservas.class
+LP/ventanaVerReservas.class
 LP/Crearmenu.class
 LN/Reserva.class
 LN/Plato.class

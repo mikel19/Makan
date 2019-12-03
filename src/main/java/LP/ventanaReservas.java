@@ -2,6 +2,7 @@ package LP;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -45,6 +46,8 @@ public class ventanaReservas extends JFrame implements ActionListener{
 	private String hora;
 	private Menu menu;
 	private JComboBox comboBox;
+	private JButton btnNewButton2;
+	private JComboBox comboBox1;
 	
 
 
@@ -143,11 +146,27 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		btnNewButton.addActionListener(this);
 		contentPane.add(btnNewButton);
 		
+		btnNewButton2 = new JButton("VER RESERVAS");
+		btnNewButton2.setForeground(Color.GRAY);
+		btnNewButton2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton2.setBounds(240, 551, 191, 67);
+		btnNewButton2.addActionListener(this);
+		contentPane.add(btnNewButton2);
+
+		btnNewButton2 = new JButton("ATRAS");
+		btnNewButton2.setForeground(Color.GRAY);
+		btnNewButton2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton2.setBounds(20, 80, 130, 30);
+		btnNewButton2.addActionListener(this);
+		contentPane.add(btnNewButton2);
+		
 		comboBox = new JComboBox();
 		comboBox.setBounds(585, 408, 146, 26);
 		comboBox.addItem("Menu Temporal");
 		comboBox.addItem("Menu Degustacion");
 		contentPane.add(comboBox);
+		
+		
 	}
 
 
@@ -162,8 +181,14 @@ public class ventanaReservas extends JFrame implements ActionListener{
 			//reserva = new Reserva(nombre, apellido, telefono, numPersonas, fecha,hora,menu);
 			vaciarTextFields();
 			break;
-			
-
+		case "VER RESERVAS":
+			ventanaVerReservas fVerReservas = new ventanaVerReservas();
+			fVerReservas.setVisible(true);
+				break;
+				
+		case "ATRAS":
+			dispose();
+			break;
 		}
 		
 	}

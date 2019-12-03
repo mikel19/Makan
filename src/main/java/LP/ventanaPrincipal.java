@@ -109,6 +109,8 @@ public class ventanaPrincipal extends JFrame implements ActionListener{
 			ventanaInformacion fInformacion = new ventanaInformacion();
 			fInformacion.setVisible(true);
 			break;
+			
+		
 		
 		}
 		
