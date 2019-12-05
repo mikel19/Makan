@@ -19,6 +19,8 @@ public class BaseDeDatos {
 	private Reserva reserva;
 	private ArrayList <Plato> list = new ArrayList<Plato>();
 	private ArrayList <Reserva> listaReservas = new ArrayList<Reserva>();
+	private ArrayList <Menu> listaMenus = new ArrayList<Menu>();
+	private Menu menu;
 	public  void conexion() {
 		Connection c = null;
 		System.out.println("fff");
@@ -270,12 +272,16 @@ public class BaseDeDatos {
 		    stmt = c.createStatement();
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
-	         resultados = stmt.executeQuery("SELECT NOMBRE FROM PLATOS;");
+	         resultados = stmt.executeQuery("SELECT NOMBRE, PRECIO, ALERGENOS,CHEF, ID FROM PLATOS;");
 	     	while (resultados.next()) {
 	     		
 			    System.out.println("NOMBRE " + resultados.getString("NOMBRE"));
 			   // plato.setNombre(resultados.getString("NOMBRE"));
-			   plato=new Plato("",2,"","");
+			   plato=new Plato("",0,"","");
+			    plato.setNombreChef(resultados.getString("CHEF"));
+			 
+			   	plato.setPrecio(resultados.getFloat("PRECIO"));
+			   	plato.setAlergenos(resultados.getString("ALERGENOS"));
 			    plato.setNombre(resultados.getString("NOMBRE"));
 			    list.add(plato);
 			 //plato.setNombre(resultados.getString(1));
@@ -327,6 +333,46 @@ public class BaseDeDatos {
 			e.printStackTrace();
 		}
 	return listaReservas;
+	     
+	
+		
+	}
+	public ArrayList <Menu> leerMenus() {
+		list.clear();
+		int i=1;
+		  
+		Connection c = null;
+	      Statement stmt = null;
+			ResultSet resultados = null;
+	      try {
+			Class.forName("org.sqlite.JDBC");
+		    c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    stmt = c.createStatement();
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         resultados = stmt.executeQuery("SELECT TIPO, PRECIO, PLATO1, PLATO2, PLATO3 FROM menu;");
+	     	while (resultados.next()) {
+	     		
+	     			
+				   
+	     			menu=new Menu("",0,"","","");
+	     			menu.setTipo(resultados.getString("TIPO"));
+	     			menu.setPrecio(resultados.getFloat("PRECIO"));
+	     			menu.setPlato1(resultados.getString("PLATO1"));
+	     			menu.setPlato2(resultados.getString("PLATO2"));
+				    menu.setPlato3(resultados.getString("PLATO3"));
+	     		
+			    listaMenus.add(menu);
+			 
+			   
+			   }
+	     	resultados.close();
+	     	c.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	return listaMenus;
 	     
 	
 		

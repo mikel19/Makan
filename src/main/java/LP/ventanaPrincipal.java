@@ -102,8 +102,8 @@ public class ventanaPrincipal extends JFrame implements ActionListener{
 			fMenus.setVisible(true);
 			break;
 		case "COMANDAS":
-			ventanaComandas fComandas = new ventanaComandas();
-			fComandas.setVisible(true);
+			ventanaComandas2 fComandas2 = new ventanaComandas2();
+			fComandas2.setVisible(true);
 			break;
 		case "INFORMACION":
 			ventanaInformacion fInformacion = new ventanaInformacion();

@@ -14,15 +14,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ventanaMenus extends JFrame implements ActionListener{
+public class ventanaComandas2 extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton btnNewButton2;
-	private JButton btnNewButton3;
-
 
 	
-	public ventanaMenus() {
+	public ventanaComandas2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 871, 738);
 		contentPane = new JPanel();
@@ -31,18 +29,18 @@ public class ventanaMenus extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("GESTIÓN DE MENUS");
+		JLabel lblNewLabel = new JLabel("GESTIÓN DE COMANDAS");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 101, 849, 20);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("CREAR NUEVO MENU");
+		JButton btnNewButton = new JButton("NUEVO PLATO");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Crearmenu menu=new Crearmenu();
-				menu.setVisible(true);
+				ventanaComandas comandas=new ventanaComandas();
+				comandas.setVisible(true);
 				
 			}
 		});
@@ -51,7 +49,7 @@ public class ventanaMenus extends JFrame implements ActionListener{
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton3 = new JButton("VER MENUS");
+		JButton btnNewButton3 = new JButton("NUEVA COMANDA");
 		btnNewButton3.setBounds(450, 350, 239, 143);
 		btnNewButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton3.addActionListener(this);
@@ -74,11 +72,12 @@ public class ventanaMenus extends JFrame implements ActionListener{
 			case "ATRAS":
 				dispose();
 				break;
+			
+			case "NUEVA COMANDA":
+				ventanaNuevaComanda fNuevaComanda = new ventanaNuevaComanda();
+				fNuevaComanda.setVisible(true);
+					break;
 				
-			case "VER MENUS":
-				ventanaVerMenus fVerMenus = new ventanaVerMenus();
-				fVerMenus.setVisible(true);
-				break;
 			
 		}
 		

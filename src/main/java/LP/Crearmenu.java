@@ -37,10 +37,15 @@ public class Crearmenu extends JFrame implements ActionListener {
 	private float precio1;
 	private String plato11;
 	private String plato22;
+	private JButton btnNewButton2;
 	private String plato33;
+	private JComboBox plato1;
+	private String nombrePlato;
 	private ArrayList <Plato> lista = new ArrayList <Plato>();
 	private BaseDeDatos datos = new BaseDeDatos();
 	private Menu menu;
+	private String nombrePlato2;
+	private String nombrePlato3;
 	
 	public Crearmenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,6 +62,13 @@ public class Crearmenu extends JFrame implements ActionListener {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 101, 849, 20);
 		contentPane.add(lblNewLabel);
+		
+		btnNewButton2 = new JButton("ATRAS");
+		btnNewButton2.setForeground(Color.GRAY);
+		btnNewButton2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnNewButton2.setBounds(20, 80, 130, 30);
+		btnNewButton2.addActionListener(this);
+		contentPane.add(btnNewButton2);
 		
 		tipo = new JTextField();
 		tipo.setBounds(139, 147, 86, 20);
@@ -85,8 +97,13 @@ public class Crearmenu extends JFrame implements ActionListener {
 		contentPane.add(lblPlato_1);
 		
 		JComboBox plato2 = new JComboBox();
-		plato2.setBounds(439, 318, 86, 20);
+		plato2.setBounds(439, 318, 100, 30);
 		contentPane.add(plato2);
+//		plato2.setColumns(10);
+		
+		JComboBox plato3 = new JComboBox();
+		plato3.setBounds(439, 370, 100, 30);
+		contentPane.add(plato3);
 //		plato2.setColumns(10);
 		
 		JLabel lblPlato_2 = new JLabel("plato 3");
@@ -94,10 +111,6 @@ public class Crearmenu extends JFrame implements ActionListener {
 		contentPane.add(lblPlato_2);
 		
 		
-		plato3 = new JTextField();
-		plato3.setBounds(439, 370, 86, 20);
-		contentPane.add(plato3);
-		plato3.setColumns(10);
 		
 		JButton aceptar = new JButton("aceptar");
 		aceptar.addActionListener(this); 
@@ -107,8 +120,8 @@ public class Crearmenu extends JFrame implements ActionListener {
 		contentPane.add(aceptar);
 		BaseDeDatos datos=new BaseDeDatos();
 		Plato platos=new Plato(plato11, precio1, plato11, plato11);
-		JComboBox plato1 = new JComboBox();
-		plato1.setBounds(439, 270, 61, 22);
+		plato1 = new JComboBox();
+		plato1.setBounds(439, 270, 100, 30);
 		contentPane.add(plato1);
 		
 		lista.addAll(datos.leerdatos());
@@ -118,7 +131,7 @@ public class Crearmenu extends JFrame implements ActionListener {
 			plato1.addItem(lista.get(i).getNombre());
 		}
 		
-		String nombrePlato = plato1.getSelectedItem()+"";
+		nombrePlato = (String)plato1.getSelectedItem()+"";
 		for(int i=0;i<lista.size();i++)
 		{
 			
@@ -128,11 +141,22 @@ public class Crearmenu extends JFrame implements ActionListener {
 			plato2.addItem(lista.get(i).getNombre());
 			}
 		}
-		String nombrePlato2 = plato2.getSelectedItem()+"";
+		nombrePlato3 = plato3.getSelectedItem()+"";
+		for(int i=0;i<lista.size();i++)
+		{
+			
+			if(lista.get(i).getNombre().equalsIgnoreCase(nombrePlato2)) 
+			{
+				
+			}else {
+			plato3.addItem(lista.get(i).getNombre());
+			}
+		}
 	
 		menu=new Menu("",0,"","","");
 		menu.setPlato1(nombrePlato);
 		menu.setPlato2(nombrePlato2);
+		menu.setPlato3(nombrePlato3);
 //		  Plato plato=new Plato("",2,"","");
 //		Connection c = null;
 //	      Statement stmt = null;
@@ -171,14 +195,20 @@ public class Crearmenu extends JFrame implements ActionListener {
 		{
 		case "aceptar":
 			tipo1=tipo.getText();
-		precio1=Float.parseFloat(precio.getText());
 			
-			plato22=plato2.getText();
-		plato33=plato3.getText();
+			precio1=Float.parseFloat(precio.getText());
+			plato11=nombrePlato;
+			plato22=nombrePlato2;
+			plato33=nombrePlato3;
 		
-			Menu menu=new Menu("",0,"","","");
+			Menu menu=new Menu(tipo1,precio1, plato11, plato22,plato33);
 			BaseDeDatos datos=new BaseDeDatos();
 			datos.añadirmenu(menu);
+			break;
+			
+		case "ATRAS":
+			dispose();
+			break;
 		}
 		
 	}
