@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import LN.Comanda;
 import LN.Menu;
 import LN.Plato;
 import LN.Reserva;
@@ -113,6 +114,31 @@ public class BaseDeDatos {
 	      }
 	      System.out.println("Table created successfully");
 	}
+	
+	public void creaciontabla4() {
+		 Connection c = null;
+	      Statement stmt = null;
+	      
+	      try {
+	         Class.forName("org.sqlite.JDBC");
+	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         System.out.println("Opened database successfully");
+
+	         stmt = c.createStatement();
+	         String sql = "CREATE TABLE COMANDAS " +
+	                        "(ID INT  NOT NULL," + 
+	                        " IDRESERVA INT NOT NULL," +
+	                         "PLATOS ARRAYLIST NOT NULL," +
+	                         "MENU MENU NOT NULL)"; 
+	         stmt.executeUpdate(sql);
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Table created successfully");
+	}
 	public void anadirdatosreserva(Reserva reserva) {
 	
 		
@@ -126,6 +152,31 @@ public class BaseDeDatos {
 	         stmt = c.createStatement();
 	         String sql = "INSERT INTO RESERVAS (NOMBRE,APELLIDO,FECHA,TELEFONO,HORA,MENU,PERSONAS) " +
                   "VALUES ('"+reserva.getNombre()+"','"+reserva.getApellido()+"','"+reserva.getFecha()+"','"+reserva.getTelefono()+"','"+reserva.getHora()+"','"+reserva.getMenu().getTipo()+"','"+reserva.getNumPersonas()+"');"; 
+	         stmt.executeUpdate(sql);
+	         stmt.close();
+		      c.commit();
+		      c.close();
+		  } catch ( Exception e ) {
+		         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		         System.exit(0);
+		      }
+		      System.out.println("Records created successfully");
+	         
+	         
+	}
+	public void anadirComandas(Comanda comanda) {
+	
+		
+		Connection c = null;
+	      Statement stmt = null;
+		 try {
+	         Class.forName("org.sqlite.JDBC");
+	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         stmt = c.createStatement();
+	         String sql = "INSERT INTO COMANDAS (IDRESERVA, PLATOS, MENU) " +
+                  "VALUES ('"+comanda.getIdReserva()+"','"+comanda.getPlatos()+"','"+comanda.getMenu()+"');";
 	         stmt.executeUpdate(sql);
 	         stmt.close();
 		      c.commit();

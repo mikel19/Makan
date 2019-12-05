@@ -11,7 +11,7 @@ public class Comanda {
     private ArrayList<Plato> platos;
     private Menu menu;
 
-    public Comanda(int idReserva) {
+    public Comanda(int idReserva, ArrayList<Plato>platos) {
         this.idComanda = App.comandas.size()+1;
         this.idReserva = idReserva;
         this.platos = new ArrayList<Plato>();

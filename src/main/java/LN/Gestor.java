@@ -2,6 +2,8 @@ package LN;
 
 import LD.BaseDeDatos;
 import LP.App;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Gestor {
@@ -18,8 +20,8 @@ public class Gestor {
         App.platos.add(nuevoPlato);
         return nuevoPlato;
     }
-    public Comanda crearComanda(int idReserva){
-        Comanda nuevaComanda = new Comanda(idReserva);
+    public Comanda crearComanda(int idReserva, ArrayList<Plato>platos){
+        Comanda nuevaComanda = new Comanda(idReserva, platos);
         App.comandas.add(nuevaComanda);
         return nuevaComanda;
     }

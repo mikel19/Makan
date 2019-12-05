@@ -218,7 +218,7 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		numPersonas = Integer.parseInt(textFieldNumPersonas.getText());
 		String fecha2="ff";
 		
-		//fecha = textFieldFecha.getText();
+		fecha = textFieldFecha.getText();
 		
 		hora = textFieldHora.getText();
 		menu = new Menu(comboBox.getSelectedItem()+"",20,"","","");
