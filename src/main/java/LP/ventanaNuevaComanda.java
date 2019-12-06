@@ -57,11 +57,13 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 	private int id;
 	private String chef;
 	private ArrayList <Menu> listaMenus = new ArrayList <Menu>();
+	private ArrayList <Float> listaPrecios = new ArrayList <Float>();
 	private float precio1;
 	private String plato1;
 	private String plato2;
 	private String plato3;
 	private String tipo;
+	private Float resultado;
 	
 
 
@@ -180,6 +182,7 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 			model1.addRow(data);
 		
 		}
+		resultado=resultado;
 		
 	
 		
@@ -212,11 +215,27 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 					System.out.println(listaPComandas.get(i).getNombre());
 				}
 				
-				Comanda c=new Comanda(0,listaPComandas);
+			//	Comanda c=new Comanda(0,listaPComandas);
+				
+				listaPrecios.add(precio1);
+				for(int i=0;i<listaPrecios.size();i++)
+				{
+					System.out.println("Precios:" + listaPrecios.get(i));
+				}
 				
 				break;
-		
 				
+			case "VER":
+				resultado=0.0f;
+				for(int i=0;i<listaPrecios.size();i++)
+				{
+					System.out.println("Precios:" + listaPrecios.get(i));
+					System.out.println("R:" + resultado);
+					resultado=datos.sumar(resultado, listaPrecios.get(i));
+				}
+				
+				
+				System.out.println("Total Comanda: " + resultado);
 				
 		}
 		

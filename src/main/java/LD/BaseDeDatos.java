@@ -215,7 +215,7 @@ public class BaseDeDatos {
 		
 		
 	}
-	
+
 	public void añadirplatos(Plato plato) {
 		
 		Connection c = null;
@@ -346,6 +346,44 @@ public class BaseDeDatos {
 		}
 	return list;
 	}
+	
+	public float sumaPlatos() {
+		
+		int i=1;
+		float total=0;
+		  
+		Connection c = null;
+	      Statement stmt = null;
+			ResultSet resultados = null;
+	      try {
+			Class.forName("org.sqlite.JDBC");
+		    c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    stmt = c.createStatement();
+	         c.setAutoCommit(false);
+	         System.out.println("Opened database successfully");
+	         resultados = stmt.executeQuery("SELECT PRECIO FROM PLATOS;");
+	     	while (resultados.next()) 
+	     	{
+	     		
+			   total=sumar(total,resultados.getFloat("PRECIO"));
+			   
+			}
+	     	resultados.close();
+	     	c.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      System.out.println(total);
+	return total;
+	}
+	public float sumar(float resultado, float precio)
+	{
+		resultado += precio;
+		
+		return resultado;
+	}
+	
 	
 	public ArrayList <Reserva> leerReservas() {
 		list.clear();

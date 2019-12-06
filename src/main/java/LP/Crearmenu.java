@@ -129,9 +129,11 @@ public class Crearmenu extends JFrame implements ActionListener {
 		{
 		
 			plato1.addItem(lista.get(i).getNombre());
+		
 		}
 		
 		nombrePlato = (String)plato1.getSelectedItem()+"";
+
 		for(int i=0;i<lista.size();i++)
 		{
 			

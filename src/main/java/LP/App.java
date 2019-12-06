@@ -34,6 +34,7 @@ public class App
        frame.setVisible(true);
        frame.lanzarVentana();
        java.sql.Connection c=datos.conectar();
+     
         
     }
 }
