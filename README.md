@@ -6,7 +6,7 @@ Proyecto del Restaurante Makan
 
 Este restaurante no dispone de ningún tipo de software para gestionar las comandas, las reservas, ni los platos y menús. Por lo que este proyecto en lenguaje Java pretende es solucionar y mejorar estos aspectos. 
 
-Se ha utilizado Maven para el desarrollo del proyecto, incorporando muchas herramientas vinculadas a esta herramienta.
+Se ha utilizado Maven para el desarrollo del proyecto, incorporando muchas herramientas vinculadas a esta.
 
 1) JUnit
 2) Javadoc
