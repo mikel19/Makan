@@ -388,6 +388,7 @@ public class BaseDeDatos {
 	public ArrayList <Reserva> leerReservas() {
 		list.clear();
 		int i=1;
+		Menu menu;
 		  
 		Connection c = null;
 	      Statement stmt = null;
@@ -400,7 +401,8 @@ public class BaseDeDatos {
 	         System.out.println("Opened database successfully");
 	         resultados = stmt.executeQuery("SELECT NOMBRE, APELLIDO, FECHA, HORA, TELEFONO, MENU, PERSONAS FROM RESERVAS;");
 	     	while (resultados.next()) {
-	     		
+	     		String tipo = resultados.getString("MENU");
+	    		menu = new Menu(tipo,20,"","","");
 	     			System.out.println("NOMBRE " + resultados.getString("NOMBRE"));
 				   // plato.setNombre(resultados.getString("NOMBRE"));
 	     			reserva=new Reserva("","","",0,"","",null);
@@ -410,6 +412,7 @@ public class BaseDeDatos {
 				    reserva.setHora(resultados.getString("HORA"));
 				    reserva.setTelefono(resultados.getString("TELEFONO"));
 				    reserva.setNumPersonas(resultados.getInt("PERSONAS"));
+				    reserva.setMenu(menu);
 	     		
 			    listaReservas.add(reserva);
 			 //plato.setNombre(resultados.getString(1));

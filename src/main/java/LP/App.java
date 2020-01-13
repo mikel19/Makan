@@ -31,7 +31,7 @@ public class App
     	//datos.creaciontabla3();
   
        ventanaPrincipal frame = new ventanaPrincipal();
-       frame.setVisible(true);
+       //frame.setVisible(true);
        frame.lanzarVentana();
        java.sql.Connection c=datos.conectar();
      

@@ -115,11 +115,11 @@ public class ventanaVerReservas extends JFrame implements ActionListener{
 			fecha = listaReservas.get(i).getFecha();
 			hora = listaReservas.get(i).getHora();
 			telefono = listaReservas.get(i).getTelefono();
-			//menu=listaReservas.get(i).getMenu();
+			String menu=listaReservas.get(i).getMenu().getTipo();
 			numPersonas=listaReservas.get(i).getNumPersonas();
 			
 			
-			Object[] data= {nombre, apellido, fecha, telefono, hora, null, numPersonas};
+			Object[] data= {nombre, apellido, fecha, telefono, hora, menu, numPersonas};
 			
 			model.addRow(data);
 			

@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JFrame;
@@ -48,6 +49,7 @@ public class ventanaReservas extends JFrame implements ActionListener{
 	private JComboBox comboBox;
 	private JButton btnNewButton2;
 	private JComboBox comboBox1;
+	private BaseDeDatos bd = new BaseDeDatos();
 	
 
 
@@ -162,10 +164,25 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		
 		comboBox = new JComboBox();
 		comboBox.setBounds(585, 408, 146, 26);
-		comboBox.addItem("Menu Temporal");
-		comboBox.addItem("Menu Degustacion");
+//		comboBox.addItem("Menu Temporal");
+//		comboBox.addItem("Menu Degustacion");
+		anadirComboBox();
 		contentPane.add(comboBox);
 		
+		
+	}
+
+
+	private void anadirComboBox() 
+	{
+		ArrayList <Menu> menu = new ArrayList <Menu> ();
+		menu.addAll(bd.leerMenus());
+		comboBox.addItem("");
+		
+		for(int i=0;i<menu.size();i++)
+		{
+			comboBox.addItem(menu.get(i).getTipo());
+		}
 		
 	}
 
@@ -221,7 +238,9 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		fecha = textFieldFecha.getText();
 		
 		hora = textFieldHora.getText();
-		menu = new Menu(comboBox.getSelectedItem()+"",20,"","","");
+		String tipo = comboBox.getSelectedItem()+"";
+		menu = new Menu(tipo,20,"","","");
+		
 		Reserva reserva=new Reserva(nombre, apellido, telefono, numPersonas, fecha, hora, menu);
 		
 	
