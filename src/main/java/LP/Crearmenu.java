@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import LD.BaseDeDatos;
 import LN.Menu;
@@ -16,6 +18,7 @@ import LN.Plato;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -39,7 +42,9 @@ public class Crearmenu extends JFrame implements ActionListener {
 	private String plato22;
 	private JButton btnNewButton2;
 	private String plato33;
-	private JComboBox plato1;
+	private JComboBox platos1;
+	private JComboBox platos2;
+	private JComboBox platos3 ;
 	private String nombrePlato;
 	private ArrayList <Plato> lista = new ArrayList <Plato>();
 	private BaseDeDatos datos = new BaseDeDatos();
@@ -71,94 +76,87 @@ public class Crearmenu extends JFrame implements ActionListener {
 		contentPane.add(btnNewButton2);
 		
 		tipo = new JTextField();
-		tipo.setBounds(139, 147, 86, 20);
+		tipo.setBounds(157, 249, 106, 30);
 		contentPane.add(tipo);
 		tipo.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("TIPO");
-		lblNewLabel_1.setBounds(72, 150, 46, 14);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(90, 262, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Precio");
-		lblNewLabel_2.setBounds(72, 199, 46, 14);
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setBounds(100, 331, 46, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		precio = new JTextField();
-		precio.setBounds(139, 196, 86, 20);
+		precio.setBounds(167, 328, 106, 30);
 		contentPane.add(precio);
 		precio.setColumns(10);
 		
 		JLabel lblPlato = new JLabel("Plato 1");
-		lblPlato.setBounds(364, 274, 46, 14);
+		lblPlato.setForeground(Color.WHITE);
+		lblPlato.setBounds(386, 214, 106, 20);
 		contentPane.add(lblPlato);
 		
 		JLabel lblPlato_1 = new JLabel("Plato 2");
-		lblPlato_1.setBounds(364, 321, 46, 14);
+		lblPlato_1.setForeground(Color.WHITE);
+		lblPlato_1.setBounds(386, 277, 106, 31);
 		contentPane.add(lblPlato_1);
 		
-		JComboBox plato2 = new JComboBox();
-		plato2.setBounds(439, 318, 100, 30);
-		contentPane.add(plato2);
+		platos2 = new JComboBox();
+		platos2.setBounds(477, 282, 100, 30);
+		contentPane.add(platos2);
+		
 //		plato2.setColumns(10);
 		
-		JComboBox plato3 = new JComboBox();
-		plato3.setBounds(439, 370, 100, 30);
-		contentPane.add(plato3);
+		platos3 = new JComboBox();
+		platos3.setBounds(477, 353, 100, 30);
+		contentPane.add(platos3);
 //		plato2.setColumns(10);
 		
-		JLabel lblPlato_2 = new JLabel("plato 3");
-		lblPlato_2.setBounds(364, 373, 46, 14);
+		JLabel lblPlato_2 = new JLabel("Plato 3");
+		lblPlato_2.setForeground(Color.WHITE);
+		lblPlato_2.setBounds(386, 349, 106, 36);
 		contentPane.add(lblPlato_2);
 		
 		
 		
-		JButton aceptar = new JButton("aceptar");
+		JButton aceptar = new JButton("Aceptar");
+		aceptar.setFont(new Font("Tahoma", Font.BOLD, 18));
 		aceptar.addActionListener(this); 
 			
 		
-		aceptar.setBounds(222, 553, 109, 36);
+		aceptar.setBounds(222, 480, 284, 109);
 		contentPane.add(aceptar);
 		BaseDeDatos datos=new BaseDeDatos();
 		Plato platos=new Plato(plato11, precio1, plato11, plato11);
-		plato1 = new JComboBox();
-		plato1.setBounds(439, 270, 100, 30);
-		contentPane.add(plato1);
+		platos1 = new JComboBox();
+		platos1.setBounds(477, 214, 100, 30);
+		contentPane.add(platos1);
 		
 		lista.addAll(datos.leerdatos());
+		platos1.addItem("");
+		platos2.addItem("");
+		platos3.addItem("");
 		for(int i=0;i<lista.size();i++)
 		{
 		
-			plato1.addItem(lista.get(i).getNombre());
+			platos1.addItem(lista.get(i).getNombre());
+			platos2.addItem(lista.get(i).getNombre());
+			platos3.addItem(lista.get(i).getNombre());
 		
 		}
 		
-		nombrePlato = (String)plato1.getSelectedItem()+"";
+		//nombrePlato = (String)platos1.getSelectedItem()+"";
 
-		for(int i=0;i<lista.size();i++)
-		{
-			
-			if(lista.get(i).getNombre().equalsIgnoreCase(nombrePlato)) {
-				
-			}else {
-			plato2.addItem(lista.get(i).getNombre());
-			}
-		}
-		nombrePlato3 = plato3.getSelectedItem()+"";
-		for(int i=0;i<lista.size();i++)
-		{
-			
-			if(lista.get(i).getNombre().equalsIgnoreCase(nombrePlato2)) 
-			{
-				
-			}else {
-			plato3.addItem(lista.get(i).getNombre());
-			}
-		}
+		
 	
-		menu=new Menu("",0,"","","");
-		menu.setPlato1(nombrePlato);
-		menu.setPlato2(nombrePlato2);
-		menu.setPlato3(nombrePlato3);
+//		menu=new Menu("",0,"","","");
+//		menu.setPlato1(nombrePlato);
+//		menu.setPlato2(nombrePlato2);
+//		menu.setPlato3(nombrePlato3);
 //		  Plato plato=new Plato("",2,"","");
 //		Connection c = null;
 //	      Statement stmt = null;
@@ -196,14 +194,21 @@ public class Crearmenu extends JFrame implements ActionListener {
 		switch(e.getActionCommand())
 		{
 		case "aceptar":
+			
+	
+			
 			tipo1=tipo.getText();
 			
 			precio1=Float.parseFloat(precio.getText());
-			plato11=nombrePlato;
-			plato22=nombrePlato2;
-			plato33=nombrePlato3;
+//			plato11=nombrePlato;
+//			plato22=nombrePlato2;
+//			plato33=nombrePlato3;
+			String plato11 = platos1.getSelectedItem()+"";
+			String plato22 = platos2.getSelectedItem()+"";
+			String platos33 = platos3.getSelectedItem()+"";
+			
 		
-			Menu menu=new Menu(tipo1,precio1, plato11, plato22,plato33);
+			Menu menu=new Menu(tipo1,precio1, plato11, plato22,platos33);
 			BaseDeDatos datos=new BaseDeDatos();
 			datos.añadirmenu(menu);
 			break;
@@ -214,4 +219,6 @@ public class Crearmenu extends JFrame implements ActionListener {
 		}
 		
 	}
+
+	
 }

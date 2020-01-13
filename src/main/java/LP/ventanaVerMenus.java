@@ -83,7 +83,7 @@ public class ventanaVerMenus extends JFrame implements ActionListener{
 		model = new DefaultTableModel();
 		table = new JTable(model);
 		JScrollPane sp =new JScrollPane();
-		sp.setBounds(70, 150,800, 100);
+		sp.setBounds(70, 150,800, 418);
 		sp.setViewportView(table);
 		
 	

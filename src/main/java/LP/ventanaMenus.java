@@ -47,12 +47,12 @@ public class ventanaMenus extends JFrame implements ActionListener{
 			}
 		});
 		
-		btnNewButton.setBounds(150, 350, 239, 143);
+		btnNewButton.setBounds(100, 350, 289, 191);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton3 = new JButton("VER MENUS");
-		btnNewButton3.setBounds(450, 350, 239, 143);
+		btnNewButton3.setBounds(450, 350, 289, 191);
 		btnNewButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton3.addActionListener(this);
 		contentPane.add(btnNewButton3);

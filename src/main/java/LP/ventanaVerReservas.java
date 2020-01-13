@@ -85,7 +85,7 @@ public class ventanaVerReservas extends JFrame implements ActionListener{
 		model = new DefaultTableModel();
 		table = new JTable(model);
 		JScrollPane sp =new JScrollPane();
-		sp.setBounds(70, 150,800, 200);
+		sp.setBounds(70, 150,800, 445);
 		sp.setViewportView(table);
 		
 		

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,12 +18,16 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
 import LD.BaseDeDatos;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+
 import LN.Menu;
 import LN.Reserva;
+
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -50,6 +55,7 @@ public class ventanaReservas extends JFrame implements ActionListener{
 	private JButton btnNewButton2;
 	private JComboBox comboBox1;
 	private BaseDeDatos bd = new BaseDeDatos();
+
 	
 
 
@@ -170,6 +176,11 @@ public class ventanaReservas extends JFrame implements ActionListener{
 		contentPane.add(comboBox);
 		
 		
+		
+
+		
+		
+
 	}
 
 

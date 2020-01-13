@@ -48,52 +48,58 @@ public class ventanaComandas extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblId = new JLabel("ID");
-		lblId.setBounds(31, 143, 46, 14);
+		lblId.setForeground(Color.WHITE);
+		lblId.setBounds(32, 185, 46, 14);
 		contentPane.add(lblId);
 		
 		JLabel lblPrecio = new JLabel("Precio");
-		lblPrecio.setBounds(10, 208, 46, 14);
+		lblPrecio.setForeground(Color.WHITE);
+		lblPrecio.setBounds(220, 255, 86, 17);
 		contentPane.add(lblPrecio);
 		
 		JLabel lblDescripcion = new JLabel("Nombre");
-		lblDescripcion.setBounds(236, 154, 46, 14);
+		lblDescripcion.setForeground(Color.WHITE);
+		lblDescripcion.setBounds(207, 179, 99, 27);
 		contentPane.add(lblDescripcion);
 		
 		JLabel lblIngredientes = new JLabel("Alergenos");
-		lblIngredientes.setBounds(225, 222, 46, 14);
+		lblIngredientes.setForeground(Color.WHITE);
+		lblIngredientes.setBounds(207, 330, 100, 20);
 		contentPane.add(lblIngredientes);
 		
 		id = new JTextField();
-		id.setBounds(55, 140, 86, 20);
+		id.setBounds(93, 182, 86, 20);
 		contentPane.add(id);
 		id.setColumns(10);
 		
 		precio = new JTextField();
-		precio.setBounds(55, 205, 86, 20);
+		precio.setBounds(322, 248, 136, 27);
 		contentPane.add(precio);
 		precio.setColumns(10);
 		
 		nombrep = new JTextField();
-		nombrep.setBounds(299, 151, 86, 20);
+		nombrep.setBounds(325, 182, 130, 27);
 		contentPane.add(nombrep);
 		nombrep.setColumns(10);
 		
 		alergenos = new JTextField();
-		alergenos.setBounds(299, 219, 86, 20);
+		alergenos.setBounds(322, 330, 136, 27);
 		contentPane.add(alergenos);
 		alergenos.setColumns(10);
 		
 		
-		JLabel cheff = new JLabel("chef");
-		cheff.setBounds(395, 154, 46, 14);
+		JLabel cheff = new JLabel("Chef");
+		cheff.setForeground(Color.WHITE);
+		cheff.setBounds(490, 179, 73, 27);
 		contentPane.add(cheff);
 		
 		cheff2 = new JTextField();
-		cheff2.setBounds(426, 151, 86, 20);
+		cheff2.setBounds(592, 177, 151, 30);
 		contentPane.add(cheff2);
 		cheff2.setColumns(10);
 		
 		JButton btnAceptar = new JButton("ACEPTAR");
+		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -106,7 +112,7 @@ public class ventanaComandas extends JFrame implements ActionListener{
 					vaciarTextFields();
 			}
 		});
-		btnAceptar.setBounds(141, 253, 89, 23);
+		btnAceptar.setBounds(262, 446, 259, 102);
 		contentPane.add(btnAceptar);
 	
 		
