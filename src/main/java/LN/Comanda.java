@@ -10,14 +10,18 @@ public class Comanda {
     private int idReserva;
     private ArrayList<Plato> platos;
     private Menu menu;
-
-    public Comanda(int idReserva, ArrayList<Plato>platos) {
+    private Float precio;
+    private String nombreM;
+    
+    public Comanda(int idComanda, ArrayList<Plato>platos, String nombreM,Float precio) {
         this.idComanda = App.comandas.size()+1;
         this.idReserva = idReserva;
         this.platos = new ArrayList<Plato>();
+        this.precio=precio;
+        this.nombreM=nombreM;
     }
 
-    public int getIdComanda() {
+	public int getIdComanda() {
         return idComanda;
     }
 
@@ -47,5 +51,21 @@ public class Comanda {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+    public float getPrecio()
+    {
+    	return precio;
+    }
+    public void setPrecio(Float precio)
+    {
+    	this.precio=precio;
+    }
+    public String getNombreM()
+    {
+    	return nombreM;
+    }
+    public void setNombreM(String nombreM)
+    {
+    	this.nombreM=nombreM;
     }
 }

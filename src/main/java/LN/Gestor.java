@@ -20,8 +20,8 @@ public class Gestor {
         App.platos.add(nuevoPlato);
         return nuevoPlato;
     }
-    public Comanda crearComanda(int idReserva, ArrayList<Plato>platos){
-        Comanda nuevaComanda = new Comanda(idReserva, platos);
+    public Comanda crearComanda(int idComanda, ArrayList<Plato>platos, String nombreM, Float precio){
+        Comanda nuevaComanda = new Comanda(idComanda, platos, nombreM,precio);
         App.comandas.add(nuevaComanda);
         return nuevaComanda;
     }

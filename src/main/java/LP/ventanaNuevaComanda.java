@@ -54,6 +54,7 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 	private float precio;
 	private String alergenos;
 	private JButton boton;
+	private JButton boton1;
 	private int id;
 	private String chef;
 	private ArrayList <Menu> listaMenus = new ArrayList <Menu>();
@@ -64,6 +65,9 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 	private String plato3;
 	private String tipo;
 	private Float resultado;
+	private int idComanda;
+	private String nombre11;
+
 	
 
 
@@ -112,7 +116,7 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 	
 	    contentPane.add(sp);
 	    
-	    btnNewButton=new JButton("AÑADIR A LA COMANDA");
+	    btnNewButton=new JButton("AÑADIR PLATO");
 	    btnNewButton.setForeground(Color.GRAY);
 	    btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 	    btnNewButton.setBounds(600,280,200, 50);
@@ -142,12 +146,20 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 	    
 	    contentPane.add(sp1);
 	    
-	    boton=new JButton("VER");
+	    boton=new JButton("AÑADIR MENU");
 	    boton.setForeground(Color.GRAY);
 	    boton.setFont(new Font("Tahoma", Font.BOLD, 18));
-	    boton.setBounds(600,570,130, 80);
+	    boton.setBounds(600,500,200, 50);
 	    boton.addActionListener(this);
 		contentPane.add(boton);
+		
+
+	    boton1=new JButton("AÑADIR COMANDA");
+	    boton1.setForeground(Color.GRAY);
+	    boton1.setFont(new Font("Tahoma", Font.BOLD, 18));
+	    boton1.setBounds(300,500,200, 50);
+	    boton1.addActionListener(this);
+		contentPane.add(boton1);
 		
 		listaPlatos.addAll(datos.leerdatos());
 		
@@ -198,7 +210,7 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 				dispose();
 				break;
 				
-			case "AÑADIR A LA COMANDA":
+			case "AÑADIR PLATO":
 				
 				int row=table.getSelectedRow();
 				String nombre1=(String) table.getValueAt(row, 1);
@@ -208,14 +220,18 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 				
 				Plato p=new Plato(nombre1, precio1, alergenos1, chef1);
 				
+				
 				listaPComandas.add(p);
 				
 				for(int i=0;i<listaPComandas.size();i++)
 				{
-					System.out.println(listaPComandas.get(i).getNombre());
-				}
+					
 				
-			//	Comanda c=new Comanda(0,listaPComandas);
+					System.out.println(listaPComandas.get(i).getNombre());
+					
+					
+				}
+			
 				
 				listaPrecios.add(precio1);
 				for(int i=0;i<listaPrecios.size();i++)
@@ -225,7 +241,27 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 				
 				break;
 				
-			case "VER":
+			case "AÑADIR MENU":
+				
+				int row1=table1.getSelectedRow();
+				nombre11=(String) table1.getValueAt(row1, 0);
+				String Plato11=(String) table1.getValueAt(row1, 2);
+				String Plato22=(String) table1.getValueAt(row1, 3);
+				String Plato33=(String) table1.getValueAt(row1, 4);
+				Float Precio2=(Float) table1.getValueAt(row1, 1);
+				
+				
+				System.out.println("nmenu : " + nombre11);
+				
+				listaPrecios.add(Precio2);
+				for(int i=0;i<listaPrecios.size();i++)
+				{
+					System.out.println("Precios:" + listaPrecios.get(i));
+				}
+				
+				break;
+				
+			case "AÑADIR COMANDA":
 				resultado=0.0f;
 				for(int i=0;i<listaPrecios.size();i++)
 				{
@@ -236,6 +272,12 @@ public class ventanaNuevaComanda extends JFrame implements ActionListener{
 				
 				
 				System.out.println("Total Comanda: " + resultado);
+				
+				
+				Comanda c= new Comanda(idComanda, listaPComandas, nombre11, resultado);
+				
+				BaseDeDatos datos=new BaseDeDatos();
+				datos.anadirComandas(c);
 				
 		}
 		

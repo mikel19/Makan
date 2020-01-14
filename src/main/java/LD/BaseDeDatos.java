@@ -129,7 +129,8 @@ public class BaseDeDatos {
 	                        "(ID INT  NOT NULL," + 
 	                        " IDRESERVA INT NOT NULL," +
 	                         "PLATOS ARRAYLIST NOT NULL," +
-	                         "MENU MENU NOT NULL)"; 
+	                         "STRING MENU NOT NULL," +
+	                         "FLOAT PRECIOS NOT NULL)"; 
 	         stmt.executeUpdate(sql);
 	         stmt.close();
 	         c.close();
@@ -175,8 +176,8 @@ public class BaseDeDatos {
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
 	         stmt = c.createStatement();
-	         String sql = "INSERT INTO COMANDAS (IDRESERVA, PLATOS, MENU) " +
-                  "VALUES ('"+comanda.getIdReserva()+"','"+comanda.getPlatos()+"','"+comanda.getMenu()+"');";
+	         String sql = "INSERT INTO COMANDAS (IDRESERVA, PLATOS, MENU, PRECIOS) " +
+                  "VALUES ('"+comanda.getIdReserva()+"','"+comanda.getPlatos()+"','"+comanda.getNombreM()+"', '"+comanda.getPrecio()+"');";
 	         stmt.executeUpdate(sql);
 	         stmt.close();
 		      c.commit();
