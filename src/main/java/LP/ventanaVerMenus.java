@@ -53,6 +53,7 @@ public class ventanaVerMenus extends JFrame implements ActionListener{
 	private int id;
 	private String plato2;
 	private String plato3;
+	private JButton boton1;
 	
 
 
@@ -80,6 +81,13 @@ public class ventanaVerMenus extends JFrame implements ActionListener{
 		btnNewButton2.addActionListener(this);
 		contentPane.add(btnNewButton2);
 		
+		boton1=new JButton("ELIMINAR");
+	    boton1.setForeground(Color.GRAY);
+	    boton1.setFont(new Font("Tahoma", Font.BOLD, 18));
+	    boton1.setBounds(330,600,200, 50);
+	    boton1.addActionListener(this);
+	    contentPane.add(boton1);
+		
 		model = new DefaultTableModel();
 		table = new JTable(model);
 		JScrollPane sp =new JScrollPane();
@@ -99,6 +107,73 @@ public class ventanaVerMenus extends JFrame implements ActionListener{
 		
 
 		
+		cargar();
+		
+	
+		
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		switch(e.getActionCommand())
+		{		
+			case "ATRAS":
+				dispose();
+				break;
+			
+		
+			case "ELIMINAR":
+				eliminar();
+				dispose();
+				break;
+		}
+		
+	}
+	
+	public void eliminar()
+	{
+		int row=table.getSelectedRow();
+		
+		Menu menu1=new Menu("",0.0f,"","","");
+		
+		String tipo1=(String) table.getValueAt(row, 0);
+		String plato1=(String) table.getValueAt(row, 2);
+		String plato2=(String) table.getValueAt(row, 3);
+		String plato3=(String) table.getValueAt(row, 4);
+		Float precio1=(Float) table.getValueAt(row, 1);
+		
+		listaMenus.addAll(datos.leerMenus());
+		for(int i=0;i<listaMenus.size();i++)
+		{
+			if(listaMenus.get(i).getTipo().equals(tipo1))
+			{
+		
+				precio=listaMenus.get(i).getPrecio();
+				plato1=listaMenus.get(i).getPlato1();
+				plato2=listaMenus.get(i).getPlato2();
+				plato3=listaMenus.get(i).getPlato3();
+					
+			}
+		}
+		
+		menu1.setPlato1(plato1);
+		menu1.setPlato2(plato2);
+		menu1.setPlato3(plato3);
+		menu1.setPrecio(precio);
+		menu1.setTipo(tipo1);
+		
+		Menu menu =new Menu(tipo1,precio1, plato1, plato2, plato3);
+		
+		
+
+		datos.eliminarMenu(menu);
+		
+	}
+	
+	public void cargar()
+	{
 		listaMenus.addAll(datos.leerMenus());
 		
 		for(int i=0;i<listaMenus.size();i++)
@@ -115,22 +190,6 @@ public class ventanaVerMenus extends JFrame implements ActionListener{
 			model.addRow(data);
 		
 		}
-		
-	
-		
-	}
-	
-	
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		switch(e.getActionCommand())
-		{		
-			case "ATRAS":
-				dispose();
-				break;
-		}
-		
 	}
 
 

@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+
 import LD.BaseDeDatos;
 
 import java.text.ParseException;
@@ -48,13 +49,19 @@ public class ventanaVerReservas extends JFrame implements ActionListener{
 	private String fecha;
 	private String hora;
 	private Menu menu;
+	private Float precio;
+	private String plato1;
+	private String plato2;
+	private String plato3;
 	private JComboBox comboBox;
 	private JTable table;
 	private DefaultTableModel model;
 	private JButton btnNewButton2;
 	private ArrayList <Reserva> listaReservas = new ArrayList <Reserva>();
+	private ArrayList <Menu> listaMenus = new ArrayList <Menu>();
 	private BaseDeDatos datos = new BaseDeDatos();
-	
+	private JButton boton1;
+
 
 
 	public ventanaVerReservas() 
@@ -81,6 +88,12 @@ public class ventanaVerReservas extends JFrame implements ActionListener{
 		btnNewButton2.addActionListener(this);
 		contentPane.add(btnNewButton2);
 		
+		boton1=new JButton("ELIMINAR");
+	    boton1.setForeground(Color.GRAY);
+	    boton1.setFont(new Font("Tahoma", Font.BOLD, 18));
+	    boton1.setBounds(330,600,200, 50);
+	    boton1.addActionListener(this);
+		contentPane.add(boton1);
 		
 		model = new DefaultTableModel();
 		table = new JTable(model);
@@ -101,9 +114,76 @@ public class ventanaVerReservas extends JFrame implements ActionListener{
 		
 		contentPane.add(sp);
 	
+		cargar();
 		
 		
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		switch(e.getActionCommand())
+		{		
+			case "ATRAS":
+				dispose();
+				break;
+				
+			
+			case "ELIMINAR":
+				eliminar();
+				dispose();
+				break;
+		}
 		
+	}
+	
+	public void eliminar()
+	{
+		int row=table.getSelectedRow();
+		
+		Menu menu1=new Menu("",0.0f,"","","");
+		
+		String nombre1=(String) table.getValueAt(row, 0);
+		String apellido=(String) table.getValueAt(row, 1);
+		String fecha=(String) table.getValueAt(row, 2);
+		String telefono=(String) table.getValueAt(row, 3);
+		String hora=(String) table.getValueAt(row, 4);
+		String menu=(String) table.getValueAt(row, 5);
+		int personas=(int) table.getValueAt(row, 6);
+		
+		listaMenus.addAll(datos.leerMenus());
+		for(int i=0;i<listaMenus.size();i++)
+		{
+			
+			
+			if(listaMenus.get(i).getTipo().equals(menu))
+			{
+		
+				precio=listaMenus.get(i).getPrecio();
+				plato1=listaMenus.get(i).getPlato1();
+				plato2=listaMenus.get(i).getPlato2();
+				plato3=listaMenus.get(i).getPlato3();
+					
+			}
+		}
+		
+		menu1.setPlato1(plato1);
+		menu1.setPlato2(plato2);
+		menu1.setPlato3(plato3);
+		menu1.setPrecio(precio);
+		menu1.setTipo(menu);
+		
+		Reserva reserva =new Reserva(nombre1, apellido, telefono, personas, fecha, hora, menu1);
+		
+		
+
+		datos.eliminarReserva(reserva);
+		
+	   
+	}
+	public void cargar()
+	{
 		listaReservas.addAll(datos.leerReservas());
 		
 		for(int i=0;i<listaReservas.size();i++)
@@ -124,22 +204,9 @@ public class ventanaVerReservas extends JFrame implements ActionListener{
 			model.addRow(data);
 			
 		}
-		
-		
 	}
 	
-	
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		switch(e.getActionCommand())
-		{		
-			case "ATRAS":
-				dispose();
-				break;
-		}
-		
-	}
+
 
 
 }
