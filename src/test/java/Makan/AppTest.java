@@ -2,12 +2,15 @@ package Makan;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
 import LD.BaseDeDatos;
 import LN.Menu;
 import LN.Reserva;
@@ -20,7 +23,7 @@ public class AppTest
 	private BaseDeDatos b;
 	private Reserva reserva;
 	private ArrayList <Reserva> listaReservas;
-	
+
 	@Before
 	public void setUp()
 	{
@@ -38,6 +41,20 @@ public class AppTest
 		
 		
 	}
+	
+	@Test
+	public void usoMockito() {
+		
+	    ArrayList <Reserva> mockList = Mockito.mock(ArrayList.class);
+	     
+	    mockList.add(reserva);
+	    Mockito.verify(mockList).add(reserva);
+	    assertEquals(0, mockList.size());
+	 
+	    Mockito.when(mockList.size()).thenReturn(100);
+	    assertEquals(100, mockList.size());
+	}
+	
 	
 	@Test
 	public void testReserva()
