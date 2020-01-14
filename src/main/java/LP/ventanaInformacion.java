@@ -42,6 +42,12 @@ public class ventanaInformacion extends JFrame implements ActionListener {
 		btnNewButton2.setBounds(20, 80, 130, 30);
 		btnNewButton2.addActionListener(this);
 		contentPane.add(btnNewButton2);
+		
+		JButton btnNewButton3 = new JButton("VER PLATOS");
+		btnNewButton3.setBounds(450, 350, 289, 191);
+		btnNewButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnNewButton3.addActionListener(this);
+		contentPane.add(btnNewButton3);
 	}
 	
 	
@@ -52,6 +58,10 @@ public class ventanaInformacion extends JFrame implements ActionListener {
 		{		
 			case "ATRAS":
 				dispose();
+				break;
+			case "VER PLATOS":
+				ventanaVerPlatos fVerPlatos = new ventanaVerPlatos();
+				fVerPlatos.setVisible(true);
 				break;
 		}
 		
