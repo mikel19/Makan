@@ -108,7 +108,7 @@ public class ventanaComandas extends JFrame implements ActionListener{
 				
 					
 					BaseDeDatos datos=new BaseDeDatos();
-					datos.añadirplatos(plato);
+					datos.anadirplatos(plato);
 					vaciarTextFields();
 			}
 		});

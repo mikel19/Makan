@@ -12,7 +12,7 @@ import com.mysql.cj.xdevapi.Statement;
 import LD.BaseDeDatos;
 
 /**
- * Hello world!
+ * Metodo inicial para lanzar la aplicacion
  *
  */
 public class App 

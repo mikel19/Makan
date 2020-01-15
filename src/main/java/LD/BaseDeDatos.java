@@ -14,6 +14,12 @@ import LN.Menu;
 import LN.Plato;
 import LN.Reserva;
 
+
+/**
+ * Clase Que interactua con la base de datos llamada test.bd
+ * @author Alumno
+ *
+ */
 public class BaseDeDatos {
 
 	private final String RUTABD = "data/Makan" +
@@ -38,6 +44,9 @@ public class BaseDeDatos {
 	      System.out.println("Opened database successfully");
 	}
 	
+	/**
+	 * Metodo para crear la tabla de reservas
+	 */
 	public void creaciontabla() {
 		 Connection c = null;
 	      Statement stmt = null;
@@ -66,6 +75,11 @@ public class BaseDeDatos {
 	      System.out.println("Table created successfully");
 	}
 	
+	
+	/**
+	 * Metodo para crear la tabla de menu
+	 */
+	
 	public void creaciontabla2() {
 		 Connection c = null;
 	      Statement stmt = null;
@@ -91,6 +105,10 @@ public class BaseDeDatos {
 	      }
 	      System.out.println("Table created successfully");
 	}
+	
+	/*
+	 * Metodo para crear la tabla de platos
+	 */
 	public void creaciontabla3() {
 		 Connection c = null;
 	      Statement stmt = null;
@@ -117,6 +135,10 @@ public class BaseDeDatos {
 	      System.out.println("Table created successfully");
 	}
 	
+	/**
+	 * Metodo para crear la tabla de comandas
+	 */
+	
 	public void creaciontabla4() {
 		 Connection c = null;
 	      Statement stmt = null;
@@ -142,6 +164,11 @@ public class BaseDeDatos {
 	      }
 	      System.out.println("Table created successfully");
 	}
+	
+	/**
+	 * Metodo para añadir una reserva en la tabla de reservas
+	 * @param reserva
+	 */
 	public void anadirdatosreserva(Reserva reserva) {
 	
 		
@@ -167,6 +194,11 @@ public class BaseDeDatos {
 	         
 	         
 	}
+	
+	/**
+	 * Método para añadir comanda en la tabla de comandas
+	 * @param comanda
+	 */
 	public void anadirComandas(Comanda comanda) {
 	
 		
@@ -192,8 +224,12 @@ public class BaseDeDatos {
 	         
 	         
 	}
+	/**
+	 * Metodo para añadir menu en la base de datos
+	 * @param menu
+	 */
 
-	public void añadirmenu(Menu menu) {
+	public void anadirmenu(Menu menu) {
 		
 		Connection c = null;
 	      Statement stmt = null;
@@ -218,8 +254,13 @@ public class BaseDeDatos {
 		
 		
 	}
+	
+	/**
+	 * Metodo para añadir un plato en la base de datos
+	 * @param plato
+	 */
 
-	public void añadirplatos(Plato plato) {
+	public void anadirplatos(Plato plato) {
 		
 		Connection c = null;
 	      Statement stmt = null;
@@ -263,7 +304,10 @@ public class BaseDeDatos {
 //  return resultado;
 //}
 	
-	
+	/**
+	 * Metodo para conectar con la base de datos
+	 * @return
+	 */
 	public Connection conectar(){
 		try{
 			Class.forName("org.sqlite.JDBC");
@@ -278,6 +322,12 @@ public class BaseDeDatos {
 		}
 		return conn;
 	}
+	
+	/**
+	 * Metodo para obtener resultados de una sentencia SQL
+	 * @param sentencia
+	 * @return
+	 */
 	public ResultSet obtenerDatos(String sentencia){
 		Connection conn = conectar();
 		Statement stmt = null;
@@ -296,6 +346,11 @@ public class BaseDeDatos {
 		}
 		return rs;
 	}
+	
+	/**
+	 * Metodo para guardar datos a través de una sentencia SQL
+	 * @param sentencia
+	 */
 	public void guardarDatos(String sentencia){
 		Connection conn = conectar();
 		Statement stmt = null;
@@ -313,6 +368,10 @@ public class BaseDeDatos {
 		}
 	}
 	
+	/**
+	 * Metodo para leer los datos registrados sobre platos de la base de datos
+	 * @return
+	 */
 	public ArrayList <Plato> leerdatos() {
 		list.clear();
 		int i=1;
@@ -349,6 +408,11 @@ public class BaseDeDatos {
 		}
 	return list;
 	}
+	
+	/**
+	 * Método para sumar precio de los platos
+	 * @return
+	 */
 	
 	public float sumaPlatos() {
 		
@@ -387,6 +451,10 @@ public class BaseDeDatos {
 		return resultado;
 	}
 	
+	/**
+	 * Metodo para leer las reservas registradas en el sistema
+	 * @return
+	 */
 	
 	public ArrayList <Reserva> leerReservas() {
 		list.clear();
@@ -432,6 +500,11 @@ public class BaseDeDatos {
 	
 		
 	}
+	
+	/**
+	 * Metodo para leer los menus registrados en el sistema
+	 * @return
+	 */
 	public ArrayList <Menu> leerMenus() {
 		list.clear();
 		int i=1;
@@ -471,7 +544,13 @@ public class BaseDeDatos {
 	     
 	
 		
+	
 	}
+	
+	/**
+	 * Metodo para eliminar una reserva de la base de datos. Se recibe por parametro la reserva que se quiere eliminar
+	 * @param reserva
+	 */
 public void eliminarReserva(Reserva reserva)
 {
 	Connection c = null;
@@ -494,6 +573,11 @@ public void eliminarReserva(Reserva reserva)
 	      System.out.println("Records created successfully");
 	
 }
+
+/**
+ * Se elimina el menu que se recibe por parametro de la base de datos
+ * @param menu
+ */
 public void eliminarMenu(Menu menu)
 {
 	Connection c = null;
@@ -516,6 +600,11 @@ public void eliminarMenu(Menu menu)
 	      System.out.println("Records created successfully");
 	
 }
+
+/**
+ * Se elimina el plato que se recibe como parametro de la base de datos
+ * @param plato
+ */
 public void eliminarPlato(Plato plato)
 {
 	Connection c = null;
@@ -537,6 +626,52 @@ public void eliminarPlato(Plato plato)
 	      }
 	      System.out.println("Records created successfully");
 	
+}
+
+/**
+ * Metodo para leer todas las comandas registradas en la base de datos
+ * @return
+ */
+public ArrayList<Comanda> leerComandas() {
+	list.clear();
+	int i=1;
+	float a=2;
+	Comanda comanda;
+	ArrayList<Plato> platos=new ArrayList <Plato>();
+	ArrayList <Comanda> comandass= new ArrayList <Comanda>();
+	Connection c = null;
+      Statement stmt = null;
+		ResultSet resultados = null;
+      try {
+		Class.forName("org.sqlite.JDBC");
+	    c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	    stmt = c.createStatement();
+         c.setAutoCommit(false);
+         System.out.println("Opened database successfully");
+         resultados = stmt.executeQuery("SELECT IDRESERVA, PLATOS, MENU, PRECIOS FROM COMANDAS;");
+     	while (resultados.next()) {
+     		
+     		
+    		comanda = new Comanda(i,platos,"",a);
+     			System.out.println("NOMBRE " + resultados.getString("MENU"));
+     			
+     			
+     			reserva=new Reserva("","","",0,"","",null);
+     			
+     			comanda.setNombreM(resultados.getString("Menu"));
+			    comanda.setPrecio(resultados.getFloat("PRECIOS"));
+     			comandass.add(comanda);
+     		
+		   
+		   }
+     	resultados.close();
+     	c.close();
+	} catch (ClassNotFoundException | SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+return comandass;
+
 }
 
 

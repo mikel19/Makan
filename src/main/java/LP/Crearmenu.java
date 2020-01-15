@@ -210,7 +210,7 @@ public class Crearmenu extends JFrame implements ActionListener {
 		
 			Menu menu=new Menu(tipo1,precio1, plato11, plato22,platos33);
 			BaseDeDatos datos=new BaseDeDatos();
-			datos.añadirmenu(menu);
+			datos.anadirmenu(menu);
 			break;
 			
 		case "ATRAS":
