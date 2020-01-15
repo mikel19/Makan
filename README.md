@@ -16,6 +16,17 @@ Se ha utilizado Maven para el desarrollo del proyecto, incorporando muchas herra
 
 ## ¿Cómo instalar el proyecto en el equipo?
 
+Para instalar el proyecto, es suficiente con hacer git clone del repositorio del proyecto
+
 ## ¿Cómo lanzar la aplicación?
+
+Para lanzar la aplicación, es necesario validar y compilar previamente. Por lo que, desde linea de comandos, se lanzarán lo siguiente:
+
+- mvn validate
+- mvn compile
+
+Cuando se quieran lanzar los tests de JUnit, es necesario escribir el siguiente comando:
+
+- mvn test
 
 ## Conclusiones
