@@ -9,10 +9,8 @@ Este restaurante no dispone de ningún tipo de software para gestionar las coman
 Se ha utilizado Maven para el desarrollo del proyecto, incorporando muchas herramientas vinculadas a esta.
 
 1) JUnit
-2) Javadoc
-3) Contiperf
-4) Jacoco
-5) Mockito
+2) Mockito
+2) Javadoc (Comentarios en la clase de BaseDeDatos.java)
 
 ## ¿Cómo instalar el proyecto en el equipo?
 
@@ -29,4 +27,7 @@ Cuando se quieran lanzar los tests de JUnit, es necesario escribir el siguiente 
 
 - mvn test
 
-## Conclusiones
+Si se quiere generar documentación con javadoc, primero hay que ejecutar los siguientes comandos:
+
+- mvn javadoc:javadoc
+- javadoc "ruta de la clase BaseDeDatos.java
